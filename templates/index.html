@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<!--- Welcome box -->
+<div class="welcom_box">
+	<p> <span id="welcom_text"> Welcome to my website </span> <br> <span id="welcom_title"> FIRAS KOUBAA </span>
+</div>
+
+
+<!--- Introduction  -->
+<div class="intro">
+		<div class="intro_text">
+			<p id="intro_title">Introduction</p> 
+			<p>During my engineering studies, programming has always been important and a must use tool 
+				in multiple courses and projects.	</p>
+			<p>I have exploited  COVID-19 lockdown period to learn and to boost up my programming skills. I had one goal in mind:
+				 Acquire the maximum possible of knowledge and skills that could help me to access a new activity sector. </p>
+			<p>This website represents my portfolio and at the same time is one of my main projects. It aims to showcase skills 
+				that I have earned with different technologies (Python, SQL, HTML, CSS, JavaScript, GIT, AWS...) 
+				through projects realization. </p>
+				<p>My project source code is available under my GitHub repository. Go-ahead and check it &#128521.</p>
+			<br>
+			<ul>
+				<li> <a href="/static/files/Firas Koubaa CV.pdf" download="Firas Koubaa CV" > <img class="external_sites" src="/static/img/cv-2.PNG" alt="CV"></a></li>
+				<li><a href=" https://www.linkedin.com/in/firas-koubaa-281429116" target="_blank"> <img class="external_sites" src="/static/img/linkedin.png" alt="Linkedin"> </a></li>
+				<li><a href="https://github.com/firaskoubaa?tab=repositories" target="_blank"> <img class="external_sites" src="/static/img/github.PNG" alt="GitHub"> </a>	</li>
+			</ul>	
+		</div>
+		<div class="intro_card">
+			<img id="my_image" src="/static/img/IMG_20201104_180744.jpg" >
+			<div class="intro_card_text">
+				<p id="intro_card_title" >Firas KOUBAA</p> 
+				Engineer <br>
+				<a href="mailto:koubaafiraseng@gmail.com">koubaafiraseng@gmail.com</a> <br>
+				(+33) 780782199 <br> 
+				Paris, France 
+			</div>
+		</div>
+</div>
+
+
+<!--- Main project -->
+<div class="projects_section">
+	<div class="all_projects_title">
+		 MAIN PROJECT 
+	</div>
+	<div class="intro">
+		<div >
+			<p> This application is about a shelf for your favorite books. It is your own personal library.</p>
+			<p> Using Google Books API's, the most relevant books for your search will appear in the following table.
+				You may choose the book that you want and store it in the DataBase (add it to the bookshelf).</p>
+			<p>Notice: This search presents only the first 10 books relevant to your search. It is only based on the book name.
+				Further enhancements are planned (all the relevant books, search based on the author, year of publishing...).	</p>
+		</div>
+		
+</div>
+	
+
+
+<!--- Project decomposition -->
+<div class="projects_section">
+	<div class="all_projects_title">
+		 PROJECT PARTS BREAKDOWN
+	</div>
+	<div class="projects_content">
+		<div class="project">
+			<img class="description_logo" src="/static/img/front_end.png" alt="FE"> 
+			<div class="project_title"> Front-End</div>
+			<div>Website interface</div>
+			<hr >
+			<img id="html_css_js_logo" src="/static/img/html-css-js-3.png" alt="HTML CSS JS">
+			<a href="project1.html" > <button type="button">PROJECT 1</button></a>
+		</div>
+		<div class="project">
+			<img class="description_logo" src="/static/img/back-end-4.png" alt="BE">
+			<div class="project_title">Back-End</div>
+			<div> Website Server, Database</div> 
+			<hr >
+			<div>
+				<img id="python_flask_sql_logo" src="/static/img/python_flask_sql.PNG" alt="PYTHON+FLASK+SQL">
+			</div>
+			<a href="project2.html" > <button type="button">PROJECT 2</button></a>
+		</div>
+		<div class="project">
+			<img class="description_logo" src="/static/img/deployment.png" alt="DEPLOYMENT">
+			<div class="project_title">Deployment</div> 
+			<div> Website deployment</div> 
+			<hr >
+			<div>
+			<img id="aws_logo" src="/static/img/aws_all-5.PNG" alt="AWS"> 
+			</div>
+			<a href="project3.html" > <button type="button">PROJECT 3</button></a>
+		</div>
+	</div>
+</div>
+</div>
+{% endblock %}

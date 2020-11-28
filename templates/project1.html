@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<!--- Welcome box -->
+<div class="welcom_box">
+	<div class="welcome_box_content">
+	<p id="welcom_title">  PROJECT 1
+	</div>
+</div>
+</div>
+
+
+<!--- Introduction  -->
+<div class="proj_intro">
+			<p id="intro_title">Introduction</p> 
+			<p>First project focuses on Front-End web development. The goal is to showcase my programming skills with HTML, CSS and JavaScript. 
+			<br>Furthermore, the developed website will be my projects portfolio that I will typically share with recruiters.</p>
+			<p>Following, HTML, CSS and JavaScript codes of the website home page will be listed.  </p>
+			<p> 
+				<ul><li> HTML code</li></ul>
+				<object data="/static/codes/home_html.txt"></object>
+				<ul><li> CSS code</li></ul>
+				<object data="/static/codes/home_css.txt"></object>
+				<ul><li> JavaScript code</li></ul>
+				<object id="code_js_box" data="/static/codes/home_js.txt" > </object>
+			</p>
+</div>		
+
+{% endblock %}

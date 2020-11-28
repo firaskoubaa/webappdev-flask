@@ -1,0 +1,121 @@
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+	&lt;meta charset="utf-8"&gt;
+	&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+	&lt;title&gt;Firas Koubaa Website&lt;/title&gt;
+	&lt;link href="style.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;!-- Navigation bar --&gt;
+&lt;nav class="navigationbar"&gt;
+	&lt;a href="#"&gt;&lt;img class="logo_image" src="img/logo.png"&gt;&lt;/a&gt;
+	&lt;ul class="navigationbar_items"&gt;		
+			&lt;li class="navigationbar_1item" &gt; &lt;a  href="index.html"&gt;Home&lt;/a&gt; &lt;/li&gt;
+			&lt;li class="navigationbar_1item" &gt; &lt;a  class="active" href="#"&gt;Project 1&lt;/a&gt; &lt;/li&gt;
+			&lt;li class="navigationbar_1item" &gt; &lt;a  href="project2.html"&gt;Project 2 &lt;/a&gt; &lt;/li&gt;
+			&lt;li class="navigationbar_1item" &gt; &lt;a  href="project3.html"&gt;Project 3&lt;/a&gt; &lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/nav&gt;
+
+
+&lt;!--- Welcome box --&gt;
+&lt;div class="welcom_box"&gt;
+	&lt;div class="welcome_box_content"&gt;
+	&lt;p id="welcom_title"&gt;  PROJECT 1
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;!--- Introduction  --&gt;
+&lt;div class="proj_intro"&gt;
+			&lt;p id="intro_title"&gt;Introduction&lt;/p&gt; 
+			&lt;p&gt;The idea of the first project is to create a website that chowcases my frontend programming skils, and at the same time, 
+				to be my portfolio which I will share with recruters. 	&lt;/p&gt;
+			&lt;p&gt;The follwing lines will lists my HTML, CSS and JavaScript codes (home page only) that I developped to create my website. &lt;/p&gt;
+			&lt;p&gt; &lt;li&gt; HTML code:&lt;/li&gt;
+				&lt;object data="codes/home_html.txt"  &gt;&lt;/object&gt;
+				&lt;li&gt; CSS code:&lt;/li&gt;
+				&lt;object data="codes/home_css.txt"&gt;&lt;/object&gt;
+				&lt;li&gt; JavaScript code:&lt;/li&gt;
+				&lt;object data="codes/home_js.txt"&gt; &lt;/object&gt;
+			&lt;/p&gt;
+			&lt;hr&gt;
+			&lt;link rel="import" href="/style.css"&gt;
+			&lt;pre data-="codes/home_js.txt"  &gt;&lt;/pre&gt; &lt;code data-="codes/home_js.txt"&gt;&lt;/code&gt;
+			&lt;code class="language_css" markup&gt;&lt;/code&gt;
+			&lt;pre class="language-css" rel="CSS" data-line=""&gt;&lt;/pre&gt; ::before
+
+			&lt;link rel="import" href="index.html"&gt;
+			&lt;script&gt;
+				var doc = document.querySelector('link[rel="import"]').import;
+				// Grab DOM from doc.html's document.
+				var text = doc.querySelector('.index');
+				document.body.appendChild(text.cloneNode(true));
+				&lt;/script&gt;
+			&lt;embed src="codes/home_js.txt"  style="text-emphasis-color: white; color: white; background-color: black;"&gt;
+				&lt;hr&gt;
+				[!--#include virtual="a.html" --]
+				&lt;iframe src="index.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"&gt;&lt;/iframe&gt;
+			
+&lt;/div&gt;
+
+
+&lt;!--- Projects section --&gt;
+&lt;div class="projects_section"&gt;
+	&lt;div class="all_projects_title"&gt;
+		 PROJECTS 
+	&lt;/div&gt;
+	&lt;div class="projects_content"&gt;
+		&lt;div class="project"&gt;
+			&lt;img class="description_logo" src="img/front_end.png" alt="FE"&gt; 
+			&lt;div class="project_title"&gt; Front-End&lt;/div&gt;
+			&lt;div&gt;Website interface&lt;/div&gt;
+			&lt;hr &gt;
+			&lt;img id="html_css_js_logo" src="img/html-css-js-3.png" alt="HTML CSS JS"&gt;
+			&lt;a href="project1.html" &gt; &lt;button type="button"&gt;PROJECT 1&lt;/button&gt;&lt;/a&gt;
+		&lt;/div&gt;
+		&lt;div class="project"&gt;
+			&lt;img class="description_logo" src="img/back-end-4.png" alt="BE"&gt;
+			&lt;div class="project_title"&gt;Back-End&lt;/div&gt;
+			&lt;div&gt; Website Server, Database&lt;/div&gt; 
+			&lt;hr &gt;
+			&lt;div&gt;
+				&lt;img id="python_flask_sql_logo" src="img/python_flask_sql.PNG" alt="PYTHON+FLASK+SQL"&gt;
+			&lt;/div&gt;
+			&lt;a href="project2.html" &gt; &lt;button type="button"&gt;PROJECT 2&lt;/button&gt;&lt;/a&gt;
+		&lt;/div&gt;
+		&lt;div class="project"&gt;
+			&lt;img class="description_logo" src="img/deployment.png" alt="DEPLOYMENT"&gt;
+			&lt;div class="project_title"&gt;Deployment&lt;/div&gt; 
+			&lt;div&gt; Website deployment&lt;/div&gt; 
+			&lt;hr &gt;
+			&lt;div&gt;
+			&lt;img id="aws_logo" src="img/aws_all-5.PNG" alt="AWS"&gt; 
+			&lt;/div&gt;
+			&lt;a href="project3.html" &gt; &lt;button type="button"&gt;PROJECT 3&lt;/button&gt;&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;!--- Footer --&gt;
+&lt;footer&gt;
+	&lt;hr&gt;
+	&lt;div class="footer_content"&gt;
+	&lt;img class="final_website_logo" src="img/logo_2.png" alt="WEBSITE-LOGO"&gt;
+	&lt;p&gt; Email: koubaafiraseng@gmail.com&lt;/p&gt; 
+	&lt;p&gt;Tel: (+33) 7 80 78 21 99 &lt;/p&gt;
+	&lt;p&gt;Adress: Paris, France&lt;/p&gt;	
+&lt;/footer&gt; 
+
+&lt;!--- Button that thakes the used the top of the page --&gt;
+&lt;button onclick="movetotop_Function()" id="top_page" title="Go to top"&gt;^&lt;br&gt;^&lt;/button&gt; 
+
+&lt;script src="script.js"&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;

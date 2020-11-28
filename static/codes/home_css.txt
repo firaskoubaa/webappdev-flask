@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+html,body {
+  font-family: 'Poppins', sans-serif;
+  color: black;
+  line-height: 1.5;
+  margin: 0 13px 0 10px;
+}
+
+/* Navigation bar */
+.navigationbar{
+  /*border: 3px solid black;*/
+  display: flex; /* horizontal list*/
+  justify-content: space-between; /*item-space-item .... */
+  align-items: center;/* midlle of the height*/
+  flex-wrap: wrap;
+}
+.logo_image {
+  width: 70px;
+  height: 70px;
+  padding-top: 12px;
+  margin-left: 36px;
+  margin-bottom: 7px;
+}
+.navigationbar_items {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.navigationbar_1item{
+  list-style-type: none;
+  margin: 0 20px;
+}
+.navigationbar_1item a {
+  color: rgb(128, 128, 128);
+  text-decoration: none;
+}
+.navigationbar_1item a:hover{
+  color: rgb(22, 22, 22);
+}
+.active{
+  font-weight: bold;
+}
+
+/* welcome box */
+.welcom_box{
+  height: 125px;
+  background-color: rgba(223, 223, 223, 0.479);
+  text-transform: uppercase;
+  display: flex; /* horizontal list*/
+  justify-content: center; /*items in the centre.... */
+  align-items: center;/* midlle of the height*/
+}
+.welcome_box_content {
+  text-align: center;
+}
+#welcom_text{
+  font-size: 25px;
+  font-weight: 500;
+}
+#welcom_title {
+  font-size: 38px;
+  font-weight: 500;
+}
+
+/* Introduction section */
+.intro{
+  padding: 65px;
+  display: flex;
+  justify-content: space-around; /*item-space-item .... */
+  flex-wrap: wrap;
+}
+#intro_title{
+  font-size: 35px;
+  margin: 0%;
+}
+.intro_text{
+  width: 500px;
+  text-align: justify;
+}
+.intro ul {
+  display: flex; 
+  justify-content: left; 
+  align-items: center;
+  margin: 0%;
+  padding : 0%;
+}
+.intro li{
+  padding-right: 10px;
+  list-style: none;
+}
+.intro a button {
+  background-color: rgb(72, 175, 72);
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 7px;
+  font-size: 40px;
+  width: 70px;
+  height: 70px;
+}
+.intro a button:hover{
+  color: rgb(22, 22, 22);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.external_sites{
+  width: 60px;
+  height: 60px;
+}
+.external_sites:hover {
+  width: 70px;
+  height: 70px;
+}
+.intro_card{
+  border: 12px solid rgba(223, 223, 223, 0.479);
+  padding: 1em;
+  border-radius: 15px;
+}
+#intro_card_title {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0%;
+}
+.intro_card_text{
+  font-size: 17px;
+}
+.intro_card_text a {
+  text-decoration: none;
+  color: #1E90FF;
+}
+.intro_card_text a:hover{
+  text-decoration:underline;
+  color: #035ab1;
+}
+#my_image{
+  width: 315px;
+  height: 315px;
+  border-radius: 5px;
+}
+
+/* Projects section */
+.all_projects_title {
+  font-size: 38px;
+  font-weight: 500;
+  display: flex; /* horizontal list*/
+  justify-content: center; /* items in the center */
+  align-items: center;/* midlle of the height*/
+  height: 100px;
+  background-color: rgba(223, 223, 223, 0.479);
+  text-transform: uppercase;
+}
+.projects_content{
+  display: flex; /* horizontal list*/
+  justify-content: space-around; /*space-item-space-item-space  */
+  align-items: center;/* midlle of the height*/
+  flex-wrap: wrap;
+  margin-top: 100px;
+}
+.project{
+  display: flex; /* horizontal list*/
+  justify-content: center; /*space-item-space-item-space  */
+  align-items: center;/* midlle of the height*/
+  flex-direction: column;
+  margin-bottom: 100px;
+}
+.project_title {
+  font-size: 28px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 0%;
+
+}
+.projects_section hr{
+  border: 0.1rem solid black;
+  width: 75%;
+  margin-top:30px;
+  margin-bottom: 15px;
+}
+.description_logo {
+  height: 100px;
+  width: 100px;
+  margin-bottom: 15px;
+}
+#html_css_js_logo{
+  height: 100px;
+  width: 200px;
+} 
+#python_flask_sql_logo {
+  height: 100px;
+  width: 236px;
+}
+#aws_logo{
+  height: 90px;
+  width: 210px;
+}
+.projects_section button{
+  background-color:  rgb(122, 6, 122);
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 7px;
+  font-size: 19px;
+  width: 125px;
+  height: 45px;
+  margin-top: 60px;
+}
+.projects_section button:hover{
+  color: black;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/*footer*/
+footer{
+  background-color: rgb(59, 59, 59);
+  color: rgb(221, 221, 221);
+  padding-top: 5px ;
+}
+footer hr{
+  border-top: 1px solid rgb(221, 221, 221);
+  width: 95%;
+}
+.footer_content{
+  display: flex; /* horizontal list*/
+  justify-content: space-around; /*space-item-space-item-space  */
+  align-items: center;/* midlle of the height*/
+  flex-wrap: wrap;
+  font-size: 17px;
+  font-weight: 500;
+}
+.final_website_logo{
+  width:  45px;
+  height: 45px;
+  padding-bottom: 5px;
+}
+footer p {
+  margin:0%;
+  padding: 0%;
+}
+
+#top_page {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: rgba(0, 0, 0, 0.733); /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 10px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 30px; /* Increase font size */
+}
+
+#top_page:hover {
+  background-color: black; /* Add a dark-grey background on hover */
+}
