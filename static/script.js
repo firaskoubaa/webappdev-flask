@@ -9,6 +9,16 @@ for (let i=0; i<menu_length;i++){
   }
 }
 
+/////Show the book search table
+// function show_book_search_table() {
+//   var x = document.getElementById("book_search_table");
+//   if (x.style.display === "none") {
+//     x.style.display = "block";
+//   } else {
+//     x.style.display = "none";
+//   }
+// } 
+
 /////Creating a button that takes the user  to the top of the page 
 //Select the button
 mybutton = document.getElementById("top_page");
@@ -26,3 +36,11 @@ function movetotop_Function() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 } 
+
+
+
+/////testing: submitting form without refreching the page 
+
+$("#search_submit_button").click(function(){ 
+    $( "#book_search_table" ).load(" #book_search_table" );
+});

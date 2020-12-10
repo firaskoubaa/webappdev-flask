@@ -1,20 +1,25 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, redirect
 import requests
 
 #Fetching data using Google Books API
 # research=input('Type the name of the book please: ')
-research='good'
-research=research.replace(' ', '+')
-matrix_data=[]
+# research='good'
+# research=research.replace(' ', '+')
 def api_fetchdata(subject):
+    global matrix_data
+    matrix_data=[]
     rq = requests.get('https://www.googleapis.com/books/v1/volumes?q='+subject)
     response = rq.json()
     all_items=response['items']
  
     for item_num in range(len(all_items)):
         itemid=all_items[item_num]['id']
-        cover=all_items[item_num]['volumeInfo']['imageLinks']['thumbnail']
         title=all_items[item_num]['volumeInfo']['title']
+
+        try:
+            cover=all_items[item_num]['volumeInfo']['imageLinks']['thumbnail']
+        except:
+            cover="/static/img/book_cover_backup.png"
 
         try:
             subtitle=all_items[item_num]['volumeInfo']['subtitle']
@@ -44,15 +49,75 @@ def api_fetchdata(subject):
         book_data=[cover,title,subtitle,authors,publishedDate,price]
         matrix_data.append(book_data)
    
-api_fetchdata(research)
+# api_fetchdata(research)
 # print(matrix_data)
 
 
 app = Flask(__name__)
 
+# @app.route("/")
+# def index():
+#     req = request.form
+#     print(req)
+#     rs = req.get("research_text")
+#     if rs =="":
+#         return render_template("index.html")
+#     else:
+#         research=rs.replace(' ', '+')
+#         api_fetchdata(research)
+#         return render_template("index.html", students=matrix_data)
+
+
+
+# @app.route("/")
+# def index():
+#     return render_template("index.html")
+
+# @app.route("/rs", methods=["GET", "POST"])
+# def index_res():
+#     req = request.form
+#     print(req)
+#     rs = req.get("research_text")
+#     print(rs)
+#     research=rs.replace(' ', '+')
+#     api_fetchdata(research)
+#     return render_template("index.html", students=matrix_data)
+
 @app.route("/")
-def index():
-    return render_template("index.html", students=matrix_data)
+def index():    
+    # req = request.args          # .args for GET method and .form for POST method
+    # print(req)
+    # rs = req.get("research_text")
+    # print(rs)
+    # if rs == None:
+    #     return render_template("index.html")
+    # else:
+    #     research=rs.replace(' ', '+')
+    #     api_fetchdata(research)
+    matrix_data=[]
+    return render_template("index.html", students=matrix_data )
+  
+
+# ///new idea
+# @app.route("/")
+# def index():
+#     return render_template("index.html")
+
+# @app.route("/?research_text=<<rese_text>>")
+# def shoresetable(rese_text):
+#     research=rese_text.replace(' ', '+')
+#     api_fetchdata(research)
+#     return render_template("index.html", students=matrix_data)
+
+# @app.route("/update")
+# def update():
+#     req = request.args          # .args for GET method and .form for POST method
+#     print(req)
+#     rs = req.get("research_text")
+#     print(rs)
+#     research=rs.replace(' ', '+')
+#     api_fetchdata(research)
+#     return render_template("project1.html")
 
 @app.route("/project1")
 def project1():
