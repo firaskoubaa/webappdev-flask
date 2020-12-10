@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect
 import requests
+import mysql.connector
 
 #Fetching data using Google Books API
 # research=input('Type the name of the book please: ')
@@ -8,9 +9,9 @@ import requests
 def api_fetchdata(subject):
     global matrix_data
     matrix_data=[]
-    rq = requests.get('https://www.googleapis.com/books/v1/volumes?q='+subject)
-    response = rq.json()
-    all_items=response['items']
+    rq = requests.get('https://www.googleapis.com/books/v1/volumes?q='+subject)     # gives the respons type <Response [200]>
+    response = rq.json()            # extracts the json data
+    all_items=response['items']     # extracts value of the key "items" which is another dictionnary
  
     for item_num in range(len(all_items)):
         itemid=all_items[item_num]['id']
@@ -49,75 +50,43 @@ def api_fetchdata(subject):
         book_data=[cover,title,subtitle,authors,publishedDate,price]
         matrix_data.append(book_data)
    
-# api_fetchdata(research)
-# print(matrix_data)
 
+#Connect to the webapp database
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="Mysql=123",
+  database="website_db"
+)
+mycursor = mydb.cursor()
+
+#read data from database
+mycursor.execute("select * from all_products")
+myresult = mycursor.fetchall()
+
+# # insert datat in database
+# sql = "INSERT INTO all_products (name, price, description) VALUES (%s, %s, %s)"  #formating to avoid SQL Injection
+# val = ('Umidigi ',120.00,'midrange phone')
+# mycursor.execute(sql, val)
+# mydb.commit()
 
 app = Flask(__name__)
 
-# @app.route("/")
-# def index():
-#     req = request.form
-#     print(req)
-#     rs = req.get("research_text")
-#     if rs =="":
-#         return render_template("index.html")
-#     else:
-#         research=rs.replace(' ', '+')
-#         api_fetchdata(research)
-#         return render_template("index.html", students=matrix_data)
-
-
-
-# @app.route("/")
-# def index():
-#     return render_template("index.html")
-
-# @app.route("/rs", methods=["GET", "POST"])
-# def index_res():
-#     req = request.form
-#     print(req)
-#     rs = req.get("research_text")
-#     print(rs)
-#     research=rs.replace(' ', '+')
-#     api_fetchdata(research)
-#     return render_template("index.html", students=matrix_data)
 
 @app.route("/")
 def index():    
-    # req = request.args          # .args for GET method and .form for POST method
-    # print(req)
-    # rs = req.get("research_text")
-    # print(rs)
-    # if rs == None:
-    #     return render_template("index.html")
-    # else:
-    #     research=rs.replace(' ', '+')
-    #     api_fetchdata(research)
-    matrix_data=[]
-    return render_template("index.html", students=matrix_data )
+    req = request.args          # .args for GET method and .form for POST method
+    print(req)
+    rs = req.get("research_text")
+    print(rs)
+    if rs == None or rs =="":
+        return render_template("index.html")
+    else:
+        research=rs.replace(' ', '+')
+        api_fetchdata(research)
+        return render_template("index.html", students=matrix_data, results=myresult )
   
 
-# ///new idea
-# @app.route("/")
-# def index():
-#     return render_template("index.html")
-
-# @app.route("/?research_text=<<rese_text>>")
-# def shoresetable(rese_text):
-#     research=rese_text.replace(' ', '+')
-#     api_fetchdata(research)
-#     return render_template("index.html", students=matrix_data)
-
-# @app.route("/update")
-# def update():
-#     req = request.args          # .args for GET method and .form for POST method
-#     print(req)
-#     rs = req.get("research_text")
-#     print(rs)
-#     research=rs.replace(' ', '+')
-#     api_fetchdata(research)
-#     return render_template("project1.html")
 
 @app.route("/project1")
 def project1():
@@ -131,11 +100,6 @@ def project2():
 def project3():
     return render_template("project3.html")
 
-
-# @app.route("/prject1_journey")
-# def prject1_journey():
-#     vnapp=request.args.get("visitor")
-#     return render_template("prject1_journey.html", VisNam=vnapp)
 
 
 if __name__=="__main__":
