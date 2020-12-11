@@ -46,8 +46,9 @@ def api_fetchdata(subject):
         else:
             price=all_items[item_num]['saleInfo']['saleability']
 
-        # print('book n°'+str(item_num+1)+' id: '+itemid+' cover:'+cover+' title: '+title+' subtitle: '+subtitle+' authors: '+authors+' publishedDate: '+publishedDate+' price: '+price)
-        book_data=[cover,title,subtitle,authors,publishedDate,price]
+        previewlink="https://books.google.com/books?id="+itemid
+        # print('book n°'+str(item_num+1)+' id: '+itemid+' cover:'+cover+' title: '+title+' subtitle: '+subtitle+' authors: '+authors+' publishedDate: '+publishedDate+' price: '+price+' previewlink: '+previewlink)
+        book_data=[cover,title,subtitle,authors,publishedDate,price,previewlink]
         matrix_data.append(book_data)
    
 
