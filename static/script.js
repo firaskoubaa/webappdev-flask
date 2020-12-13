@@ -30,6 +30,16 @@ function scrollFunction() {
     mybutton.style.display = "none";
   }
 }
+
+// Adding data row to the bookshel database &&& deleating data from the bbokshelf
+function do_ajax(p) {
+  var req = new XMLHttpRequest();
+  var button_id = p;
+  req.open('POST', '/ajax_reader', true);
+  req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+  req.send("button_id=" + button_id);
+}
+
 // When the user clicks on the button, scroll to the top of the document
 function movetotop_Function() {
   document.body.scrollTop = 0; // For Safari

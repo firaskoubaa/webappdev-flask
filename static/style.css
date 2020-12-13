@@ -186,14 +186,21 @@ tr img{
 #action_row a{
   text-decoration: none;
 }
-#add_button{
+.add_button{
   width: 90px;
   height:40px;
   background-color:rgb(77, 168, 77);
   cursor: pointer;  
   margin-left: 3px;
 }
-#visit_button{
+.delete_button{
+  width: 90px;
+  height:40px;
+  background-color: red;
+  cursor: pointer;  
+  margin-left: 3px;
+}
+.visit_button{
   width: 90px;
   height:40px;
   background-color:rgba(138, 5, 138, 0.719);
