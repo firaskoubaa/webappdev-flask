@@ -179,34 +179,72 @@ tr img{
   width: 95px;
   height: 129px;
 }
-#action_row{
+.action_row {
   width: 200px;
-  text-decoration: none;
 }
-#action_row a{
-  text-decoration: none;
+.action_row div{
+  display: flex;
+  /* width: 200px;*/
+  /* height:40px; */
+  /* width: 100%;
+  height: 100%; */
+  /* justify-content: center; 
+  text-align: center;
+   align-items: center; */
+  /* margin: auto;
+  padding: auto; */
+  /* flex-wrap: wrap; */
+  /* border: 5px solid orangered; */
+  
+}
+.add_form,.visit_a, .delete_form{
+  width: 90px;
+  height:40px;
+  margin: auto;
+  padding: auto;
+  position: relative;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* text-align: center;  */
+  /* position: relative; */
+  /* border: 5px solid yellow; */
 }
 .add_button{
   width: 90px;
   height:40px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   background-color:rgb(77, 168, 77);
   cursor: pointer;  
-  margin-left: 3px;
-}
+    /* margin: 0; */
+  /* -ms-transform: translateY(-50%); */
+  /* margin-left: 3px; */
+  }
 .delete_button{
   width: 90px;
   height:40px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   background-color: red;
-  cursor: pointer;  
-  margin-left: 3px;
+  cursor: pointer; 
 }
 .visit_button{
   width: 90px;
   height:40px;
   background-color:rgba(138, 5, 138, 0.719);
   cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  /* margin: 0; */    
+  /* -ms-transform: translateY(-50%); */    
 }
-
+.to_be_hidden{
+  display: none;
+}
 /* PROJECT PARTS BREAKDOWN */
 .all_projects_title {
   font-size: 38px;
