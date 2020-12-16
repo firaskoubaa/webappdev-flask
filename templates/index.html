@@ -153,7 +153,7 @@
 			<div>Website interface</div>
 			<hr >
 			<img id="html_css_js_logo" src="/static/img/html-css-js-3.png" alt="HTML CSS JS">
-			<a href="project1.html" > <button type="button">PROJECT 1</button></a>
+			<a href="{{url_for('project1') }}" > <button type="button">PART 1</button></a>
 		</div>
 		<div class="project">
 			<img class="description_logo" src="/static/img/back-end-4.png" alt="BE">
@@ -163,7 +163,7 @@
 			<div>
 				<img id="python_flask_sql_logo" src="/static/img/python_flask_sql.PNG" alt="PYTHON+FLASK+SQL">
 			</div>
-			<a href="project2.html" > <button type="button">PROJECT 2</button></a>
+			<a href="{{url_for('project2') }}" > <button type="button">PART 2</button></a>
 		</div>
 		<div class="project">
 			<img class="description_logo" src="/static/img/deployment.png" alt="DEPLOYMENT">
@@ -173,7 +173,17 @@
 			<div>
 			<img id="aws_logo" src="/static/img/aws_all-5.PNG" alt="AWS"> 
 			</div>
-			<a href="project3.html" > <button type="button">PROJECT 3</button></a>
+			<a href="{{url_for('project3') }}"> <button type="button">PART 3</button></a>
+		</div>
+		<div class="project">
+			<img class="description_logo" src="/static/img/fork.png" alt="DEPLOYMENT">
+			<div class="project_title">Versioning</div> 
+			<div> Version control</div> 
+			<hr >
+			<div>
+			<img id="versioning_logo" src="/static/img/git_github.png" alt="Version Control"> 
+			</div>
+			<a href="{{url_for('project4') }}" > <button type="button">Part 4</button></a>
 		</div>
 	</div>
 </div>

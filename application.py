@@ -3,11 +3,7 @@ import requests
 import mysql.connector
 
 #Fetching data using Google Books API
-# research=input('Type the name of the book please: ')
-# research='good'
-# research=research.replace(' ', '+')
 matrix_data=[]
-
 def api_fetchdata(subject):
     global matrix_data
     matrix_data=[]
@@ -97,42 +93,25 @@ def index():
 
 @app.route("/add", methods=["POST"])
 def add():
-    # button_id = request.form["button_id"]
     book_to_add_num = request.form['book_to_add_num']
     print("the book to add is number "+ str(book_to_add_num))
     # print (matrix_data)
-    # print(type(book_to_add_num))
+
+    # Copy data from the chosen book 
     for datarow in matrix_data:
         if datarow[7]==int(book_to_add_num):
             print("bbok find here are its credentials")
             print(datarow)
             add_chosen_book = datarow[0:7]
-    # Check if there is a place in database and identify the id to be allocated
-    # knowing the nombre of books stored in the database and the already used ids 
-    # mycursor = mydb.cursor()    
-    # read_id_db = "select id from all_products"
-    # mycursor.execute(read_id_db)
-    # id_db_rawlt=mycursor.fetchall()
-    # mycursor.close()    
-    # print(id_db_rawlt)
-    # id_db=[]
-    # for c in id_db_rawlt:
-    #     id_db.append(c[0])
-    #     # print(c[0])
-    # print(id_db)
 
     # Count the number of stored books
     row_count = rowcountfun()
+
     # if there is an empty place it will add the new chosen book the bookshelf,otherwise it will show a message indicating full database
     if row_count[0][0] < 10:
-        # possible_db_id=[1,2,3,4,5,6,7,8,9,10]
-        # for i in id_db:
-        #     possible_db_id.remove(i)
-        # print(min(possible_db_id))
-        # id=min(possible_db_id)
         add_chosen_book.insert(0,row_count[0][0]+1)      
         # print(add_chosen_book)  
-        # print(len(add_chosen_book))
+
         # add the chosen book data to the database
         mycursor = mydb.cursor()
         sql_addcmd = "INSERT INTO all_products (id,cover,title,subtitle,authors,publishedDate,price,previewlink) VALUES (%s ,%s, %s, %s,%s, %s, %s,%s)"    
@@ -186,7 +165,7 @@ def delete():
   
 @app.route("/project1")
 def project1():
-    return redirect("/project2")
+    return render_template("project1.html")
 
 @app.route("/project2")
 def project2():
@@ -196,6 +175,9 @@ def project2():
 def project3():
     return render_template("project3.html")
 
+@app.route("/project4")
+def project4():
+    return render_template("project4.html")
 
 
 

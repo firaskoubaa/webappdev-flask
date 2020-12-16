@@ -301,6 +301,10 @@ tr img{
   height: 90px;
   width: 210px;
 }
+#versioning_logo{
+  height: 100px;
+  width: 172px;
+}
 .projects_section button{
   background-color:  rgb(126, 14, 126);
   border: none;
