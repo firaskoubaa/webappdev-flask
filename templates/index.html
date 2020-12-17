@@ -55,9 +55,13 @@
 		</div>
 		<div class="search_bar">
 			<form >
-				<input id="research_text" name="research_text" type="text" placeholder="Enter the book's name ...">
+				<input id="searched_keywords" name="searched_keywords" type="text" placeholder="Enter the book's name ...">
 				<input id="search_submit_button" type="submit" value="Search">
 			</form>
+		</div>
+		<div id="search_status">{{search_status}}</div>
+		<div id="no_book_found">
+			There is no book registered in the database of Google Books with the name '{{searched_book_name}}'
 		</div>
 		
 		<table id="book_search_table">
@@ -98,7 +102,7 @@
 		
 		</table>	
 
-		<table>
+		<table id="bookshelf_tab">
 			<caption>My bookshelf - personal library</caption>
 			<tr>
 				<th>Number</th>
@@ -161,7 +165,7 @@
 			<div> Website Server, Database</div> 
 			<hr >
 			<div>
-				<img id="python_flask_sql_logo" src="/static/img/python_flask_sql.PNG" alt="PYTHON+FLASK+SQL">
+				<img id="python_flask_sql_api_logo" src="/static/img/python_flask_sql_API_2.png" alt="PYTHON+FLASK+SQL+API">
 			</div>
 			<a href="{{url_for('project2') }}" > <button type="button">PART 2</button></a>
 		</div>

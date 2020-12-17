@@ -10,13 +10,26 @@ for (let i=0; i<menu_length;i++){
   }
 }
 
-/////Show the search table once the search button is clicked
-var pos = current_location.indexOf("?research_text=");
-if (pos === 22){
-  var x = document.getElementById("book_search_table");
-  x.style.display = "block";
-  x.style.border = "none";
+/////Display the search table once the search button is clicked
+// var pos = current_location.indexOf("?searched_keywords=");
+// if (pos === 22){
+//   var x = document.getElementById("book_search_table");
+//   x.style.display = "block";
+//   x.style.border = "none";
+// }
+var serstat=document.getElementById("search_status").textContent;
+// alert(serstat)
+if (serstat == "not found") {
+  var disp_mess_err = document.getElementById("no_book_found");
+  disp_mess_err.style.display = "block";
 }
+else if (serstat == "found"){
+  var disp_res_tab = document.getElementById("book_search_table");
+  disp_res_tab.style.display = "block";
+  disp_res_tab.style.border = "none";
+}
+
+
 
 /////Creating a button that takes the user  to the top of the page 
 //Select the button

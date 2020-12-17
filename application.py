@@ -2,54 +2,56 @@ from flask import Flask, render_template, request, url_for, redirect
 import requests
 import mysql.connector
 
-#Fetching data using Google Books API
-matrix_data=[]
+# Read and fetching data using Google Books API
 def api_fetchdata(subject):
     global matrix_data
     matrix_data=[]
     rownum=0
     rq = requests.get('https://www.googleapis.com/books/v1/volumes?q='+subject)     # gives the respons type <Response [200]>
     response = rq.json()            # extracts the json data
-    all_items=response['items']     # extracts value of the key "items" which is another dictionnary
- 
-    for item_num in range(len(all_items)):
-        rownum += 1
-        itemid=all_items[item_num]['id']
-        title=all_items[item_num]['volumeInfo']['title']
+    try:
+        all_items=response['items']     # extracts value of the key "items" which is another dictionnary
+    
+        for item_num in range(len(all_items)):
+            rownum += 1
+            itemid=all_items[item_num]['id']
+            title=all_items[item_num]['volumeInfo']['title']
 
-        try:
-            cover=all_items[item_num]['volumeInfo']['imageLinks']['thumbnail']
-        except:
-            cover="/static/img/book_cover_backup.png"
+            try:
+                cover=all_items[item_num]['volumeInfo']['imageLinks']['thumbnail']
+            except:
+                cover="/static/img/book_cover_backup.png"
 
-        try:
-            subtitle=all_items[item_num]['volumeInfo']['subtitle']
-        except:
-            subtitle=''
+            try:
+                subtitle=all_items[item_num]['volumeInfo']['subtitle']
+            except:
+                subtitle=''
 
-        try:
-            pre_authors=all_items[item_num]['volumeInfo']['authors']
-            authors=pre_authors[0] 
-            if len(pre_authors)>1:
-                for i in range(len(pre_authors)-1):
-                    authors=authors+', '+pre_authors[i+1]
-        except:
-            authors=""
+            try:
+                pre_authors=all_items[item_num]['volumeInfo']['authors']
+                authors=pre_authors[0] 
+                if len(pre_authors)>1:
+                    for i in range(len(pre_authors)-1):
+                        authors=authors+', '+pre_authors[i+1]
+            except:
+                authors=""
 
-        try:
-            publishedDate=all_items[item_num]['volumeInfo']['publishedDate'][:10]
-        except:
-            publishedDate=""
+            try:
+                publishedDate=all_items[item_num]['volumeInfo']['publishedDate'][:10]
+            except:
+                publishedDate=""
 
-        if all_items[item_num]['saleInfo']['saleability']==	'FOR_SALE':
-            price=str(all_items[item_num]['saleInfo']['retailPrice']['amount'])
-        else:
-            price=all_items[item_num]['saleInfo']['saleability']
+            if all_items[item_num]['saleInfo']['saleability']==	'FOR_SALE':
+                price=str(all_items[item_num]['saleInfo']['retailPrice']['amount'])
+            else:
+                price=all_items[item_num]['saleInfo']['saleability']
 
-        previewlink="https://books.google.com/books?id="+itemid
-        # print(cover:'+cover+' title: '+title+' subtitle: '+subtitle+' authors: '+authors+' publishedDate: '+publishedDate+' price: '+price+' previewlink: '+previewlink+'book n°'+str(item_num)+' id: '+itemid+' )
-        book_data=[cover,title,subtitle,authors,publishedDate,price,previewlink,rownum]
-        matrix_data.append(book_data)
+            previewlink="https://books.google.com/books?id="+itemid
+            # print(cover:'+cover+' title: '+title+' subtitle: '+subtitle+' authors: '+authors+' publishedDate: '+publishedDate+' price: '+price+' previewlink: '+previewlink+'book n°'+str(item_num)+' id: '+itemid+' )
+            book_data=[cover,title,subtitle,authors,publishedDate,price,previewlink,rownum]
+            matrix_data.append(book_data)
+    except:
+        print("There is no book registered in the database of Google Books with the name '"+subject+"'")
    
 
 #Connect to the webapp database
@@ -76,7 +78,7 @@ app = Flask(__name__)
 def index():    
     req = request.args          # .args for GET method and .form for POST method
     print(req)
-    rs = req.get("research_text")
+    rs = req.get("searched_keywords")
     print(rs)
     #read data from database
     mycursor = mydb.cursor()
@@ -88,7 +90,11 @@ def index():
     else:
         research=rs.replace(' ', '+')
         api_fetchdata(research)
-        return render_template("index.html", reasearch_tab=matrix_data, bookshelf=bookshelf_db)
+        print(matrix_data)
+        if matrix_data == []: 
+            return render_template("index.html", bookshelf=bookshelf_db, searched_book_name=rs, search_status="not found")
+        else:
+            return render_template("index.html", reasearch_tab=matrix_data, bookshelf=bookshelf_db, search_status="found")
 
 
 @app.route("/add", methods=["POST"])
