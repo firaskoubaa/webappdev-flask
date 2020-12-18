@@ -66,7 +66,7 @@ html,body {
 
 /* Introduction section */
 .intro{
-  padding: 65px;
+  padding: 60px 60px 0px 60px;
   display: flex;
   justify-content: space-around; /*item-space-item .... */
   flex-wrap: wrap;
@@ -81,10 +81,11 @@ html,body {
 }
 .intro ul {
   display: flex; 
-  justify-content: left; 
-  align-items: center;
-  margin: 0%;
-  padding : 0%;
+  justify-content: space-around; 
+  padding : 10px 0% 10px 0%;
+  margin: auto;
+  height: 60px;
+  width: 300px;
 }
 .intro li{
   padding-right: 10px;
@@ -168,12 +169,25 @@ table {
   margin-left: auto;
   margin-right: auto;
 }
+#empty_bs_table{
+  padding: 3%;
+  border-color: red;
+  border-width: 3px;
+  border-radius: 12px;
+}
 #book_search_table{
   display: none;
+  padding: 3%;
+  border-color: red;
+  border-width: 3px;
+  border-radius: 12px;
 }
 #bookshelf_tab{
   display: block;
-  border: none;
+  padding: 3%;
+  border-color: green;
+  border-width: 3px;
+  border-radius: 12px;
 }
 caption{
   font-size: 2em;
@@ -186,6 +200,7 @@ table, th, td{
 }
 td {
   text-align: center;
+  width: 1300px;
 }
 tr img{
   /* reference size= 128*184 ----- reduce it to 70% => 90*129px*/
@@ -400,4 +415,15 @@ object{
 }
 #code_js_box{
   margin-bottom: 50px ;
+}
+.remark{
+  display: flex; 
+  margin-bottom: 30px;
+}
+.remark span{
+  text-decoration: underline;
+  font-weight: bold;
+}
+.remark div{
+  padding-left: 30px ;
 }

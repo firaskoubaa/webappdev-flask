@@ -4,10 +4,15 @@ const current_location=location.href;
 //Getting my current locaton URL
 const menu_item=document.querySelectorAll('.navigationbar_1item a');
 const menu_length= menu_item.length;
+const e=0;
 for (let i=0; i<menu_length;i++){
   if (menu_item[i].href === current_location){
     menu_item[i].className="active";
+    e=1;
   }
+}
+if (e == 0){
+  menu_item[0].className="active";
 }
 
 /////Display the search table once the search button is clicked
@@ -22,14 +27,22 @@ var serstat=document.getElementById("search_status").textContent;
 if (serstat == "not found") {
   var disp_mess_err = document.getElementById("no_book_found");
   disp_mess_err.style.display = "block";
+  document.getElementById("empty_bs_table").style.display="none";
 }
 else if (serstat == "found"){
-  var disp_res_tab = document.getElementById("book_search_table");
-  disp_res_tab.style.display = "block";
-  disp_res_tab.style.border = "none";
+  document.getElementById("book_search_table").style.display="block";
+  document.getElementById("empty_bs_table").style.display="none";
+  // disp_res_tab.style.border = "none";
 }
 
-
+///// Alert message whene the user tries to insert a new book in a full database (10 books)
+// alert(document.getElementById("biggest_sb_id10").textContent);
+// alert(document.getElementsByClassName("add_button ").onclick)
+// var addforcl = document.getElementsByClassName("add_form");
+// alert("hello")
+// addforcl.onsubmit = function() {alert('Hello!')};
+// cont cop = document.getElementById("biggest_sb_id10").textContent; 
+// if (document.getElementById("biggest_sb_id10").textContent == 10) {alert("hello")};
 
 /////Creating a button that takes the user  to the top of the page 
 //Select the button
