@@ -157,35 +157,18 @@ def delete():
     return redirect(url_for('index'))
 
 
-
-
-
-# @app.route("/ajax_reader", methods=["GET","POST"])
-# def ajax_reader():
-#     if request.method == 'POST': 
-#         button_id = int(request.form["button_id"])
-#         print("button clicked is number: " + str(button_id))
-#         
-
-
   
-@app.route("/project1")
-def project1():
-    return render_template("project1.html")
+@app.route("/part1")
+def part1():
+    return render_template("part1.html")
 
-@app.route("/project2")
-def project2():
-    return render_template("project2.html")
+@app.route("/part2")
+def part2():
+    return render_template("part2.html")
 
-@app.route("/project3")
-def project3():
-    return render_template("project3.html")
-
-@app.route("/project4")
-def project4():
-    return render_template("project4.html")
-
-
+@app.route("/part3")
+def part3():
+    return render_template("part3.html")
 
 
 
@@ -194,4 +177,3 @@ if __name__=="__main__":
     # app.jinja_env.auto_reload = True
     # app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.run(debug=True)
-

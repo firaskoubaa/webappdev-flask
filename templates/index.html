@@ -16,10 +16,10 @@
 				in multiple courses and projects.	</p>
 			<p>I have exploited  COVID-19 lockdown period to learn and to boost up my programming skills. I had one goal in mind:
 				 Acquire the maximum possible of knowledge and skills that could help me to access a new activity sector. </p>
-			<p>This website represents my portfolio and at the same time is one of my main projects. It aims to showcase skills 
-				that I have earned with different technologies (Python, SQL, HTML, CSS, JavaScript, GIT, AWS...) 
-				through projects realization. </p>
-				<p>My project source code is available under my GitHub repository. Go-ahead and check it &#128521.</p>
+			<p>This website represents my main project and at the same time, it is my portfolio that I will typically share with recruiters. It aims to showcase skills 
+				that I have earned using different technologies (Python, Flask, SQL, API, HTML, CSS, JavaScript, GIT, AWS...) 
+				through this project realization. </p>
+				<p>My project's source code is available on my GitHub repository. You can go-ahead and check it &#128521.</p>
 			<br>
 		</div>
 		<div class="intro_right_part">
@@ -50,10 +50,10 @@
 	<div class="intro">
 		<div >
 			<p> This application is about creating a shelf for your favorite books. It is your own personal library.</p>
-			<p> Using Google Books API's, the most relevant books for your search will appear in the following table.
-				You may choose the book that you want and store it in the DataBase (add it to the bookshelf).</p>
-			<p>Notice: This search presents only the first 10 books relevant to your search. It is only based on the book's name.
-				Further enhancements are planned (all the relevant books, search based on the author, year of publishing...).	</p>
+			<p> Using Google Books API's, the most relevant books for your search will appear in the following table (surrounded with red border).
+				You may choose the book that you want and store it in the DataBase (add it to the bookshelf surrounded with green border).</p>
+			<p>Notice: This search presents only the first 10 books relevant to your search. It is based on the book's name. You can also only store 10 books in the bookshelf.
+				Further enhancements are planned (all the relevant books, search based on the author, year of publishing...).</p>
 		</div>
 		<div class="search_bar">
 			<form >
@@ -78,7 +78,7 @@
 				<th>Action</th>			  
 			</tr>
 			<tr>
-				<td colspan="8">The table is now empty. Lunch a search and the results will be rendered in this table</td>
+				<td colspan="8">The table is now empty. Lunch a search and the results will be presented in this table</td>
 			</tr>
 		</table>	
 
@@ -109,7 +109,9 @@
 						<a href="{{row.6}}" target="_blank" class="visit_a"> 
 							<input class="visit_button" type="submit" value="VISIT"> 
 						</a>
-						<form action="/add" method="POST"  class="add_form" onsubmit="if (document.getElementById('biggest_sb_id10').textContent == 10) {alert('The database is full (10 books). You need to delete one book at least if you want to store a new book.')};">
+						<form action="/add" method="POST"  class="add_form" 
+						onsubmit="if (document.getElementById('biggest_sb_id10').textContent == 10)
+						{alert('The database is full (10 books). You need to delete one book at least if you want to add a new book to the bookshelf.')};">
 							<input type="text" class="to_be_hidden" name="book_to_add_num" value="{{row.7}}">
 							<input class="add_button" type="submit" value="ADD">
 						</form>
@@ -150,7 +152,7 @@
 						</a>
 						<form action="/delete" method="POST"  class="delete_form">
 							<input type="text" class="to_be_hidden" name="book_to_delete_id" value="{{book.0}}">
-							<input class="delete_button" type="submit" value="DELETE">
+							<input class="delete_button" type="submit" value="DELETE" onclick="return confirm('Are you sure that you want to delete this book?');">
 						</form>
 					</div>
 				</td>
@@ -175,7 +177,7 @@
 			<div>Website interface</div>
 			<hr >
 			<img id="html_css_js_logo" src="/static/img/html-css-js-3.png" alt="HTML CSS JS">
-			<a href="{{url_for('project1') }}" > <button type="button">PART 1</button></a>
+			<a href="{{url_for('part1') }}" > <button type="button">PART 1</button></a>
 		</div>
 		<div class="project">
 			<img class="description_logo" src="/static/img/back-end-4.png" alt="BE">
@@ -185,7 +187,7 @@
 			<div>
 				<img id="python_flask_sql_api_logo" src="/static/img/python_flask_sql_API_2.png" alt="PYTHON+FLASK+SQL+API">
 			</div>
-			<a href="{{url_for('project2') }}" > <button type="button">PART 2</button></a>
+			<a href="{{url_for('part2') }}" > <button type="button">PART 2</button></a>
 		</div>
 		<div class="project">
 			<img class="description_logo" src="/static/img/deployment.png" alt="DEPLOYMENT">
@@ -195,7 +197,7 @@
 			<div>
 			<img id="aws_logo" src="/static/img/aws_all-5.PNG" alt="AWS"> 
 			</div>
-			<a href="{{url_for('project3') }}"> <button type="button">PART 3</button></a>
+			<a href="{{url_for('part3') }}"> <button type="button">PART 3</button></a>
 		</div>
 		<div class="project">
 			<img class="description_logo" src="/static/img/fork.png" alt="DEPLOYMENT">
@@ -205,15 +207,15 @@
 			<div>
 			<img id="versioning_logo" src="/static/img/git_github.png" alt="Version Control"> 
 			</div>
-			<a href="{{url_for('project4') }}" > <button type="button">Part 4</button></a>
+		</div>
+		<div class="remark"> 
+			<span> Remark:</span> 
+			<ul> 
+				<li> I have chosen to not use some libraries like "jquery" and "Bootstrap" in order to learn and familiarize with the basics of Html, Css and JavaScript. I will adopt them for my future work.</li>
+				<li> Other technologies and frameworks are in my sight to learn and for further enhancement of my web application: Django, React, NoSql database...</li>
+			</ul>
 		</div>
 	</div>
 </div>
 
-<div class="remark"> 
-	<span> Remark:</span> 
-	<div>    - In order to enhanse my web application skills, several technologies are in sight: Django framework, NoSql database like MongoDB ...
-		<br> - I chosen to not use some tchnologies like "Bootstrap" and "jquery", and this in order to familiarize and learn the basics of Html, Css and JavaScript.
-	</div>
-</div>
 {% endblock %}
