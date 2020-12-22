@@ -12,14 +12,14 @@
 <div class="intro">
 		<div class="intro_text">
 			<p id="intro_title">Introduction</p> 
-			<p>During my engineering studies, programming has always been important and a must use tool 
+			<p>During my engineering studies, programming has always been important and a must-use tool 
 				in multiple courses and projects.	</p>
 			<p>I have exploited  COVID-19 lockdown period to learn and to boost up my programming skills. I had one goal in mind:
 				 Acquire the maximum possible of knowledge and skills that could help me to access a new activity sector. </p>
 			<p>This website represents my main project and at the same time, it is my portfolio that I will typically share with recruiters. It aims to showcase skills 
 				that I have earned using different technologies (Python, Flask, SQL, API, HTML, CSS, JavaScript, GIT, AWS...) 
 				through this project realization. </p>
-				<p>My project's source code is available on my GitHub repository. You can go-ahead and check it &#128521.</p>
+				<p>My project's source code is available in my GitHub repository. You can go-ahead and check it &#128521.</p>
 			<br>
 		</div>
 		<div class="intro_right_part">
@@ -50,8 +50,8 @@
 	<div class="intro">
 		<div >
 			<p> This application is about creating a shelf for your favorite books. It is your own personal library.</p>
-			<p> Using Google Books API's, the most relevant books for your search will appear in the following table (surrounded with red border).
-				You may choose the book that you want and store it in the DataBase (add it to the bookshelf surrounded with green border).</p>
+			<p> Using Google Books API's, the most relevant books for your search will appear in the following table (surrounded with red borders).
+				You may choose the book that you want and store it in the Database (add it to the bookshelf surrounded with green borders).</p>
 			<p>Notice: This search presents only the first 10 books relevant to your search. It is based on the book's name. You can also only store 10 books in the bookshelf.
 				Further enhancements are planned (all the relevant books, search based on the author, year of publishing...).</p>
 		</div>
@@ -112,7 +112,7 @@
 						<form action="/add" method="POST"  class="add_form" 
 						onsubmit="if (document.getElementById('biggest_sb_id10').textContent == 10)
 						{alert('The database is full (10 books). You need to delete one book at least if you want to add a new book to the bookshelf.')};">
-							<input type="text" class="to_be_hidden" name="book_to_add_num" value="{{row.7}}">
+							<input type="text" class="to_be_hidden" name="book_to_add_id" value="{{row.7}}">
 							<input class="add_button" type="submit" value="ADD">
 						</form>
 					</div>
@@ -174,7 +174,7 @@
 		<div class="project">
 			<img class="description_logo" src="/static/img/front_end.png" alt="FE"> 
 			<div class="project_title"> Front-End</div>
-			<div>Website interface</div>
+			<div>Web app interface</div>
 			<hr >
 			<img id="html_css_js_logo" src="/static/img/html-css-js-3.png" alt="HTML CSS JS">
 			<a href="{{url_for('part1') }}" > <button type="button">PART 1</button></a>
@@ -182,7 +182,7 @@
 		<div class="project">
 			<img class="description_logo" src="/static/img/back-end-4.png" alt="BE">
 			<div class="project_title">Back-End</div>
-			<div> Website Server, Database</div> 
+			<div> Web app Server, Database</div> 
 			<hr >
 			<div>
 				<img id="python_flask_sql_api_logo" src="/static/img/python_flask_sql_API_2.png" alt="PYTHON+FLASK+SQL+API">
@@ -192,7 +192,7 @@
 		<div class="project">
 			<img class="description_logo" src="/static/img/deployment.png" alt="DEPLOYMENT">
 			<div class="project_title">Deployment</div> 
-			<div> Website deployment</div> 
+			<div> Web app deployment</div> 
 			<hr >
 			<div>
 			<img id="aws_logo" src="/static/img/aws_all-5.PNG" alt="AWS"> 
@@ -211,8 +211,8 @@
 		<div class="remark"> 
 			<span> Remark:</span> 
 			<ul> 
-				<li> I have chosen to not use some libraries like "jquery" and "Bootstrap" in order to learn and familiarize with the basics of Html, Css and JavaScript. I will adopt them for my future work.</li>
-				<li> Other technologies and frameworks are in my sight to learn and for further enhancement of my web application: Django, React, NoSql database...</li>
+				<li> I have chosen to not use any libraries like "jQuery" and "Bootstrap" in order to learn and familiarize with the basics of HTLM, CSS and JavaScript. I will adopt them for my future work.</li>
+				<li> Other technologies and frameworks are in my sight to learn and for further enhancement of my web application: Django, React, NoSQL database...</li>
 			</ul>
 		</div>
 	</div>

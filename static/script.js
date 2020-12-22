@@ -45,16 +45,3 @@ function movetotop_Function() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 } 
-
-
-
-
-
-// Adding data row to the bookshel database &&& deleating data from the bbokshelf
-// function do_ajax(p) {
-//   var req = new XMLHttpRequest();
-//   var button_id = p;
-//   req.open('POST', '/ajax_reader', true);
-//   req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
-//   req.send("button_id=" + button_id);  
-// }
