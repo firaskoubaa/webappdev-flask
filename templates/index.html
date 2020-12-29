@@ -2,25 +2,21 @@
 
 {% block body %}
 
-<!--- Welcome box -->
-<div class="welcom_box">
-	<p> <span id="welcom_text"> Welcome to my website </span> <br> <span id="welcom_title"> FIRAS KOUBAA </span>
+<!--- Welcome section -->
+<div class="all_projects_title">
+	Welcome to my website
 </div>
-
-
-<!--- Introduction  -->
 <div class="intro">
 		<div class="intro_text">
 			<p id="intro_title">Introduction</p> 
-			<p>During my engineering studies, programming has always been important and a must-use tool 
-				in multiple courses and projects.	</p>
-			<p>I have exploited  COVID-19 lockdown period to learn and to boost up my programming skills. I had one goal in mind:
-				 Acquire the maximum possible of knowledge and skills that could help me to access a new activity sector. </p>
-			<p>This website represents my main project and at the same time, it is my portfolio that I will typically share with recruiters. It aims to showcase skills 
-				that I have earned using different technologies (Python, Flask, SQL, API, HTML, CSS, JavaScript, GIT, AWS...) 
-				through this project realization. </p>
-				<p>My project's source code is available in my GitHub repository. You can go-ahead and check it &#128521.</p>
-			<br>
+			<p>I am Firas KOUBAA, a full stack developer based in Paris.</p>
+			<p>My passion for technology has driven me to deepen my knowledge in IT and programming. 
+				Indeed, I am someone who gets happy analyzing problems and solving them by developing
+				 the adequate and logical algorithm. Versatile, I was able to acquire skills in front-end,
+				 back-end and also in deployment of web applications.
+			</p>
+			<p>This website is my portfolio that contains all the projects and the applications that I have developed.</p>
+			<p>Source codes of all my projects are available in my GitHub repository. You can go-ahead and check them out 😉.</p>
 		</div>
 		<div class="intro_right_part">
 			<div class="intro_card">
@@ -34,188 +30,83 @@
 				</div>
 			</div>
 			<ul>
-				<li> <a href="/static/files/Cv - Firas KOUBAA - FS Developer.pdf" download="Cv - Firas KOUBAA - FS Developer" > <img class="external_sites" src="/static/img/cv-2.PNG" alt="CV"></a></li>
-				<li><a href=" https://www.linkedin.com/in/firas-koubaa-281429116" target="_blank"> <img class="external_sites" src="/static/img/linkedin.png" alt="Linkedin"> </a></li>
-				<li><a href="https://github.com/firaskoubaa?tab=repositories" target="_blank"> <img class="external_sites" src="/static/img/github.PNG" alt="GitHub"> </a>	</li>
+				<div><li> <a href="/static/files/Cv - Firas KOUBAA - FS Developer.pdf"  target="_blank"> <img class="external_sites" src="/static/img/cv-2.PNG" alt="CV"></a></li></div>
+				<div><li><a href=" https://www.linkedin.com/in/firas-koubaa-engineer/" target="_blank"> <img class="external_sites" src="/static/img/linkedin.png" alt="Linkedin"> </a></li></div>
+				<div><li><a href="https://github.com/firaskoubaa?tab=repositories" target="_blank"> <img class="external_sites" src="/static/img/github.PNG" alt="GitHub"> </a>	</li></div>
 			</ul>
 		</div>
 </div>
 
 
-<!--- Main project -->
+<!--- Skills decomposition -->
 <div class="projects_section">
 	<div class="all_projects_title">
-		 MAIN PROJECT 
+		WHAT I DO
 	</div>
-	<div class="intro">
-		<div >
-			<p> This application is about creating a shelf for your favorite books. It is your own personal library.</p>
-			<p> Using Google Books API's, the most relevant books for your search will appear in the following table (surrounded with red borders).
-				You may choose the book that you want and store it in the Database (add it to the bookshelf surrounded with green borders).</p>
-			<p>Notice: This search presents only the first 10 books relevant to your search. It is based on the book's name. You can also only store 10 books in the bookshelf.
-				Further enhancements are planned (all the relevant books, search based on the author, year of publishing...).</p>
-		</div>
-		<div class="search_bar">
-			<form >
-				<input id="searched_keywords" name="searched_keywords" type="text" placeholder="Enter the book's name ...">
-				<input id="search_submit_button" type="submit" value="Search">
-			</form>
-		</div>
-		<div id="search_status">{{search_status}}</div>
-		<div id="no_book_found">
-			There is no book registered at Google Books database with with the name '{{searched_book_name}}'
-		</div>
-		<table id="empty_bs_table">
-			<caption>Searched book table</caption>
-			<tr>
-				<th>Number</th>
-				<th>Cover</th>
-				<th>Title</th>
-				<th>Subtitle</th>
-				<th>Authors</th>
-				<th>Publish Date</th>
-				<th>Price (€)</th>
-				<th>Action</th>			  
-			</tr>
-			<tr>
-				<td colspan="8">The table is now empty. Lunch a search and the results will be presented in this table</td>
-			</tr>
-		</table>	
-
-		<table id="book_search_table">
-			<caption>Searched book table</caption>
-			<tr>
-				<th>Number</th>
-				<th>Cover</th>
-				<th>Title</th>
-				<th>Subtitle</th>
-				<th>Authors</th>
-				<th>Publish Date</th>
-				<th>Price (€)</th>
-				<th>Action</th>			  
-			</tr>
-			
-			{% for row in reasearch_tab %}
-			<tr>
-				<td>{{row.7}}</td>
-				<td> <a href=" {{row.6}}" target="_blank"> <img src="{{row.0}}" alt="Book Cover"></a> </td> 
-				<td>{{row.1}}</td>
-				<td>{{row.2}}</td>
-				<td>{{row.3}}</td>
-				<td>{{row.4}}</td>
-				<td>{{row.5}}</td>
-				<td class="action_row"> 
-					<div>						
-						<a href="{{row.6}}" target="_blank" class="visit_a"> 
-							<input class="visit_button" type="submit" value="VISIT"> 
-						</a>
-						<form action="/add" method="POST"  class="add_form" 
-						onsubmit="if (document.getElementById('biggest_sb_id10').textContent == 10)
-						{alert('The database is full (10 books). You need to delete one book at least if you want to add a new book to the bookshelf.')};">
-							<input type="text" class="to_be_hidden" name="book_to_add_id" value="{{row.7}}">
-							<input class="add_button" type="submit" value="ADD">
-						</form>
-					</div>
-				</td>
-			</tr>
-			{% endfor  %}
-		
-		</table>	
-
-		<table id="bookshelf_tab">
-			<caption>The bookshelf - personal library</caption>
-			<tr>
-				<th>Number</th>
-				<th>Cover</th>
-				<th>Title</th>
-				<th>Subtitle</th>
-				<th>Authors</th>
-				<th>Publish Date</th>
-				<th>Price (€)</th>
-				<th>Action</th>			  
-			</tr>		
-
-			{% for book in bookshelf %}
-			<tr>
-				<td id="biggest_sb_id{{book.0}}">{{book.0}}</td>
-				<td><a href=" {{book.7}}" target="_blank"> <img src="{{book.1}}" alt="Book Cover"> </a> </td>
-				<td>{{book.2}}</td>
-				<td>{{book.3}}</td>
-				<td>{{book.4}}</td>
-				<td>{{book.5}}</td>
-				<td>{{book.6}}</td>
-				<!-- <td id="action_row"> <a href="{{book.7}}" target="_blank"> <input class="visit_button" type="submit" value="VISIT"> </a> <input class="delete_button" id="1{{book.0}}" onclick="do_ajax(this.id)" type="submit" value="DELETE"></td> -->
-				<td class="action_row">
-					<div>						
-						<a href="{{book.7}}" target="_blank" class="visit_a"> 
-							<input class="visit_button" type="submit" value="VISIT"> 
-						</a>
-						<form action="/delete" method="POST"  class="delete_form">
-							<input type="text" class="to_be_hidden" name="book_to_delete_id" value="{{book.0}}">
-							<input class="delete_button" type="submit" value="DELETE" onclick="return confirm('Are you sure that you want to delete this book?');">
-						</form>
-					</div>
-				</td>
-			</tr>
-			{% endfor  %}
-		
-		</table>	
-	</div>
-</div>
-	
-
-
-<!--- Project decomposition -->
-<div class="projects_section">
-	<div class="all_projects_title">
-		 PROJECT PARTS BREAKDOWN
-	</div>
-	<div class="projects_content">
-		<div class="project">
+	<div class="skills_content">
+		<div class="skill">
 			<img class="description_logo" src="/static/img/front_end.png" alt="FE"> 
-			<div class="project_title"> Front-End</div>
+			<div class="skill_title"> Front-End</div>
 			<div>Web app interface</div>
 			<hr >
 			<img id="html_css_js_logo" src="/static/img/html-css-js-3.png" alt="HTML CSS JS">
-			<a href="{{url_for('part1') }}" > <button type="button">PART 1</button></a>
 		</div>
-		<div class="project">
+		<div class="skill">
 			<img class="description_logo" src="/static/img/back-end-4.png" alt="BE">
-			<div class="project_title">Back-End</div>
+			<div class="skill_title">Back-End</div>
 			<div> Web app Server, Database</div> 
 			<hr >
 			<div>
 				<img id="python_flask_sql_api_logo" src="/static/img/python_flask_sql_API_2.png" alt="PYTHON+FLASK+SQL+API">
 			</div>
-			<a href="{{url_for('part2') }}" > <button type="button">PART 2</button></a>
 		</div>
-		<div class="project">
+		<div class="skill">
 			<img class="description_logo" src="/static/img/deployment.png" alt="DEPLOYMENT">
-			<div class="project_title">Deployment</div> 
+			<div class="skill_title">Deployment</div> 
 			<div> Web app deployment</div> 
 			<hr >
 			<div>
 			<img id="aws_logo" src="/static/img/aws_all-5.PNG" alt="AWS"> 
 			</div>
-			<a href="{{url_for('part3') }}"> <button type="button">PART 3</button></a>
 		</div>
-		<div class="project">
+		<div class="skill">
 			<img class="description_logo" src="/static/img/fork.png" alt="DEPLOYMENT">
-			<div class="project_title">Versioning</div> 
+			<div class="skill_title">Versioning</div> 
 			<div> Version control</div> 
 			<hr >
 			<div>
 			<img id="versioning_logo" src="/static/img/git_github.png" alt="Version Control"> 
 			</div>
 		</div>
-		<div class="remark"> 
-			<span> Remark:</span> 
-			<ul> 
-				<li> I have chosen to not use any libraries like "jQuery" and "Bootstrap" in order to learn and familiarize with the basics of HTLM, CSS and JavaScript. I will adopt them for my future work.</li>
-				<li> Other technologies and frameworks are in my sight to learn and for further enhancement of my web application: Django, React, NoSQL database...</li>
-			</ul>
-		</div>
 	</div>
 </div>
+
+
+<!--- Developed project -->
+<div class="projects_section">
+	<div class="all_projects_title">
+		PROJECTS
+	</div>
+	<div class="projects_content">
+
+		<div class="flip_card">
+			<div class="flip_card_content">
+			  <div class="flip_card_front">
+				<img src="/static/img/Bookshelf_img2.jpg" alt="Bookshelf">
+			  </div>
+			  <div class="flip_card_back">
+				<h2>Booskshelf App <br> <br></h2> 
+				<a href="/bookshelf_app"> <button>VISIT</button> </a>
+			  </div>
+			</div>
+		</div>
+		
+		
+		
+	</div>	
+</div>
+
+
+
 
 {% endblock %}

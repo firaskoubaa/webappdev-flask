@@ -80,6 +80,11 @@ app = Flask(__name__)
 # Home page
 @app.route("/")
 def index():    
+    return render_template("index.html")
+
+# Bookshelf application
+@app.route("/bookshelf_app")
+def bookshelf_app():
     req = request.args          # .args for GET method and .form for POST method
     rs = req.get("searched_keywords")
     print(rs)
@@ -89,15 +94,16 @@ def index():
     bookshelf_db = mycursor.fetchall()
     mycursor.close()    
     if rs == None or rs == "":
-        return render_template("index.html", bookshelf = bookshelf_db)
+        return render_template("bookshelf_app.html", bookshelf = bookshelf_db)
     else:
         research=rs.replace(' ', '+')       # In case the user runs a search with two words or more 
         api_fetchdata(research)
         print(matrix_data)
         if matrix_data == []:                # In case the application doesn't find any book with the searched name
-            return render_template("index.html", bookshelf = bookshelf_db, searched_book_name = rs, search_status = "not found")
+            return render_template("bookshelf_app.html", bookshelf = bookshelf_db, searched_book_name = rs, search_status = "not found")
         else:                                # In case everything works fine 
-            return render_template("index.html", reasearch_tab = matrix_data, bookshelf = bookshelf_db, search_status = "found")
+            return render_template("bookshelf_app.html", reasearch_tab = matrix_data, bookshelf = bookshelf_db, search_status = "found")
+
 
 # Adding the chosen book to the Databse 
 @app.route("/add", methods = ["POST"])
@@ -127,7 +133,7 @@ def add():
     else:                                   # in case the Database is totally full
         print("db is full, you have consumed your free 10 books saving ;)")
 
-    return redirect(url_for('index'))
+    return redirect(url_for('bookshelf_app'))
   
 # Deleting the selected book from the Databse 
 @app.route("/delete", methods = ["POST"])
@@ -154,23 +160,7 @@ def delete():
         mydb.commit()
     mycursor.close()
 
-    return redirect(url_for('index'))
-
-
-# Front-End page
-@app.route("/part1")
-def part1():
-    return render_template("part1.html")
-
-# Back-End page
-@app.route("/part2")
-def part2():
-    return render_template("part2.html")
-
-# Deployment page
-@app.route("/part3")
-def part3():
-    return render_template("part3.html")
+    return redirect(url_for('bookshelf_app'))
 
 
 
