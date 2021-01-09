@@ -236,6 +236,9 @@ tr img{
 .to_be_hidden{
   display: none;
 }
+.project_intro_text{
+  text-align: justify;
+}
 
 /* PROJECT PARTS BREAKDOWN */
 .all_projects_title {

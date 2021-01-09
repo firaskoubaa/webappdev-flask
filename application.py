@@ -55,17 +55,19 @@ def api_fetchdata(subject):
         print("There is no book registered in the database of Google Books with the name '" + subject + "'")
    
 
-#Connect to the webapp database
+# Connect to the webapp database    
 mydb = mysql.connector.connect(
-host = "localhost",
-user = "root",
-password = "Mysql=123",
-database = "website_db")
+host = "mydatabase.c3cyyzwlfgzi.eu-west-3.rds.amazonaws.com",
+user = "admin",
+password = "mydatabase",
+database = "bookshelf_app")
+# Using the security group in aws, I restrictid the database connection 
+# to any IP adress except my home and my EC2 instance
 
 # Count the number of stored books in the Database
 def rowcountfun():
     mycursor = mydb.cursor()
-    sql_countcmd = "SELECT COUNT(id) FROM all_products;"  
+    sql_countcmd = "SELECT COUNT(id) FROM products;"  
     mycursor.execute(sql_countcmd)
     row_count = mycursor.fetchall()
     print("the number of all rows in the database is=" + str(row_count[0][0]))
@@ -90,7 +92,7 @@ def bookshelf_app():
     print(rs)
     #read data from database
     mycursor = mydb.cursor()
-    mycursor.execute("select * from all_products")
+    mycursor.execute("select * from products")
     bookshelf_db = mycursor.fetchall()
     mycursor.close()    
     if rs == None or rs == "":
@@ -126,7 +128,7 @@ def add():
 
         #  SQL instructions to add the chosen book data to the database
         mycursor = mydb.cursor()
-        sql_addcmd = "INSERT INTO all_products (id,cover,title,subtitle,authors,publishedDate,price,previewlink) VALUES (%s ,%s, %s, %s,%s, %s, %s,%s)"    # Place holder to protect from SQL Injections
+        sql_addcmd = "INSERT INTO products (id,cover,title,subtitle,authors,publishedDate,price,previewlink) VALUES (%s ,%s, %s, %s,%s, %s, %s,%s)"    # Place holder to protect from SQL Injections
         mycursor.execute(sql_addcmd, add_chosen_book)
         mydb.commit()
         mycursor.close()
@@ -146,7 +148,7 @@ def delete():
 
     # SQL instructions to delete the chosen book data from the database
     mycursor = mydb.cursor()
-    sql = "DELETE FROM all_products  WHERE id = %s"     # Place holder to protect from SQL Injections
+    sql = "DELETE FROM products  WHERE id = %s"     # Place holder to protect from SQL Injections
     mycursor.execute(sql, (book_to_delete_id,))
     mydb.commit()
     mycursor.close()
@@ -154,7 +156,7 @@ def delete():
     # SQL instructions to update the id of books in the database after deleing a data row
     mycursor = mydb.cursor()    
     for id_to_upd in range(book_to_delete_id, row_count[0][0]):
-        sql_updatecmd = "UPDATE all_products SET id = '%s' WHERE id = %s;"      # Place holder to protect from SQL Injections
+        sql_updatecmd = "UPDATE products SET id = '%s' WHERE id = %s;"      # Place holder to protect from SQL Injections
         before_after_id=[id_to_upd, id_to_upd + 1]
         mycursor.execute(sql_updatecmd, before_after_id)
         mydb.commit()
@@ -165,4 +167,4 @@ def delete():
 
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(host='0.0.0.0',  debug=True)
