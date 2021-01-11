@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect
 import requests
 import mysql.connector
+import datetime
 
 # Read and fetch data using Google Books API
 def api_fetchdata(subject):
@@ -77,11 +78,22 @@ def rowcountfun():
 # Limit the maximum number of items to strore in the bookshelf (Databsae)
 maxnum_items_bookshelf = 10 
 
+# Log registration to ensure that website is visited by someone
+def log_register(action):
+    x = datetime.datetime.now()
+    timestamp = x.strftime("%A") + "," + x.strftime("%X") + "," + x.strftime("%x")
+    mycursor = mydb.cursor()
+    sql_addlog = "INSERT INTO logs (timestamp, comment) VALUES (%s, %s)" 
+    mycursor.execute(sql_addlog, (timestamp, action,))
+    mydb.commit()
+    mycursor.close()
+
 app = Flask(__name__)
 
 # Home page
 @app.route("/")
 def index():    
+    log_register("home page")
     return render_template("index.html")
 
 # Bookshelf application
@@ -96,11 +108,13 @@ def bookshelf_app():
     bookshelf_db = mycursor.fetchall()
     mycursor.close()    
     if rs == None or rs == "":
+        log_register("BS app page")
         return render_template("bookshelf_app.html", bookshelf = bookshelf_db)
     else:
         research=rs.replace(' ', '+')       # In case the user runs a search with two words or more 
         api_fetchdata(research)
         print(matrix_data)
+        log_register("searched book: " + rs)
         if matrix_data == []:                # In case the application doesn't find any book with the searched name
             return render_template("bookshelf_app.html", bookshelf = bookshelf_db, searched_book_name = rs, search_status = "not found")
         else:                                # In case everything works fine 
@@ -132,6 +146,7 @@ def add():
         mycursor.execute(sql_addcmd, add_chosen_book)
         mydb.commit()
         mycursor.close()
+        log_register("added book : " + add_chosen_book[2])
     else:                                   # in case the Database is totally full
         print("db is full, you have consumed your free 10 books saving ;)")
 
@@ -142,7 +157,15 @@ def add():
 def delete():
     book_to_delete_id = int(request.form['book_to_delete_id'])
     print("the book to add is number " + str(book_to_delete_id))
-    
+
+    # storing deleted book name in logs file 
+    mycursor = mydb.cursor()
+    sql_fetch_deleteb_title = "SELECT title FROM products WHERE id = %s;"  
+    mycursor.execute(sql_fetch_deleteb_title, (book_to_delete_id,))
+    book_to_delete_title = mycursor.fetchall()
+    mycursor.close()
+    log_register("deleted book : " + book_to_delete_title[0][0] + ", id = " + str(book_to_delete_id))
+
     # Count the number of stored books
     row_count = rowcountfun()
 
@@ -160,7 +183,7 @@ def delete():
         before_after_id=[id_to_upd, id_to_upd + 1]
         mycursor.execute(sql_updatecmd, before_after_id)
         mydb.commit()
-    mycursor.close()
+        mycursor.close()
 
     return redirect(url_for('bookshelf_app'))
 

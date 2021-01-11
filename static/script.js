@@ -1,28 +1,24 @@
-const current_location=location.href;
+let current_location_pathname = location.pathname;
 
 /////Making the selected navbar item bolder
 //Getting my current locaton URL
-const menu_item=document.querySelectorAll('.navigationbar_1item a');
-const menu_length= menu_item.length;
-const e=0;
+let menu_item=document.querySelectorAll('.navigationbar_1item a');
+let menu_length= menu_item.length;
+let e=0;
 for (let i=0; i<menu_length;i++){
-  if (menu_item[i].href === current_location){
-    menu_item[i].className="active";
-    e=1;
+  if (menu_item[i].pathname === current_location_pathname){
+    e=i;
   }
 };
-if (e == 0){
-  menu_item[0].className="active";
-};
+menu_item[e].className="active";
 
 /////Display the search table once the search button is clicked
-var serstat=document.getElementById("search_status").textContent;
-// alert(serstat)
+let serstat=document.getElementById("search_status").textContent;
 if (serstat == "not found") {
-  var disp_mess_err = document.getElementById("no_book_found");
+  let disp_mess_err = document.getElementById("no_book_found");
   disp_mess_err.style.display = "block";
   document.getElementById("empty_bs_table").style.display="none";
-}else {
+}else if (serstat == "found") {
   document.getElementById("book_search_table").style.display="block";
   document.getElementById("empty_bs_table").style.display="none";
   // disp_res_tab.style.border = "none";
