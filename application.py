@@ -79,12 +79,25 @@ def rowcountfun():
 maxnum_items_bookshelf = 10 
 
 # Log registration to ensure that website is visited by someone
+last_homepage_visit = datetime.datetime.now()
+last_homepage_visit_plus60sec = last_homepage_visit + datetime.timedelta(seconds=60)     # in order to not store aws visits : aws instance health checker visit the home page every 30 sec 
 def log_register(action):
+    visitor_adress = request.remote_addr
+    print("visitor ip adress is " + visitor_adress)
+    if visitor_adress == "192.168.1.10":
+        visitor_adress = ""
+    else:
+        visitor_adress = "," + visitor_adress
     x = datetime.datetime.now()
+    if action == "home page":
+        if x < last_homepage_visit_plus60sec:
+            return
+    
     timestamp = x.strftime("%A") + "," + x.strftime("%X") + "," + x.strftime("%x")
+    comment = action + visitor_adress
     mycursor = mydb.cursor()
     sql_addlog = "INSERT INTO logs (timestamp, comment) VALUES (%s, %s)" 
-    mycursor.execute(sql_addlog, (timestamp, action,))
+    mycursor.execute(sql_addlog, (timestamp, comment,))
     mydb.commit()
     mycursor.close()
 
@@ -164,7 +177,7 @@ def delete():
     mycursor.execute(sql_fetch_deleteb_title, (book_to_delete_id,))
     book_to_delete_title = mycursor.fetchall()
     mycursor.close()
-    log_register("deleted book : " + book_to_delete_title[0][0] + ", id = " + str(book_to_delete_id))
+    log_register("deleted book : " + book_to_delete_title[0][0] + ": id = " + str(book_to_delete_id))
 
     # Count the number of stored books
     row_count = rowcountfun()

@@ -301,67 +301,36 @@ tr img{
   height: 70px;
   width: 120px;
 }
-.project{
-  border: 1px solid black;
-}
-.projects_content{
-  margin: 75px;
-  /* padding-top: 100px; */
-  display: flex; /* horizontal list*/
-  justify-content: center; /*space-item-space-item-space  */
-  align-items: center;/* midlle of the height*/
-  flex-wrap: wrap;
-  /* margin-bottom: 100px; */
-}
+
 
 /* Projects section */
-.flip_card {
-  width: 250px;
-  height: 250px;
-  perspective: 1000px;
-}
-.flip_card_content {
-  position: relative;
-  width: 250px;
-  height: 250px;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
-}
-.flip_card:hover .flip_card_content {
-  transform: rotateY(180deg);
-}
-.flip_card_front, .flip_card_back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-.flip_card_back {
-  background-color: #2980b9;
-  color: white;
-  transform: rotateY(180deg);
-  display: flex;
-  justify-content: center;
+.projects_content{
+  margin: 75px;
+  display: flex; 
+  justify-content: center; 
   align-items: center;
-  flex-direction: column;
+  flex-wrap: wrap;
 }
-.flip_card img{
+.project{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  flex-wrap: wrap;
+}
+.project img{
   width:250px;
   height:250px;
+  margin-bottom: 10px;
 }
-.flip_card_back button{
-  height: 40px;
-  width: 80px;
+.visButton{
+  width: 200px;
+  height:40px;
+  cursor: pointer; 
+  border-radius: 4px;
+  background-color:rgba(138, 5, 138, 0.719);   
 }
-.flip_card_back button:hover{
-  cursor: pointer;
-  color: white;
-  background-color: rgb(71, 71, 71);
-  border-color: rgb(71, 71, 71);
-}
+
 
 
 /*///// Button that takes you to the top of the page /////*/
